@@ -1,4 +1,5 @@
-import '../src/shiny'
+import { Shiny, BetterShiny, SuperShiny } from '../src/shiny';
+import { Point } from "../src/point";
 
 // Shiny tests
 
@@ -97,46 +98,46 @@ test('BetterShiny constructor sets power value to 2.', () => {
 // SuperShiny tests
 
 test('SuperShiny default constructor sets position to default Point(0,0).', () => {
-    const superShiny = new superShiny();
+    const superShiny = new SuperShiny();
     const point = new Point();
     expect(superShiny.position).toEqual(point);
 });
 
 test('SuperShiny default constructor sets isConsumed to false.', () => {
-    const superShiny = new superShiny();
+    const superShiny = new SuperShiny();
     expect(superShiny.isConsumed).toBe(false);
 });
 
 test('SuperShiny default constructor sets sprite value to 2.', () => {
-    const superShiny = new superShiny();
+    const superShiny = new SuperShiny();
     expect(superShiny.sprite).toBe(2);
 });
 
 test('SuperShiny default constructor sets power value to 3.', () => {
-    const superShiny = new superShiny();
+    const superShiny = new SuperShiny();
     expect(superShiny.power).toBe(3);
 });
 
 test('SuperShiny constructor sets position to Point(1,2).', () => {
     const point = new Point(1,2);
-    const superShiny = new superShiny(point);
+    const superShiny = new SuperShiny(point);
     expect(superShiny.position).toEqual(point);
 });
 
 test('SuperShiny constructor sets isConsumed to false.', () => {
     const point = new Point(1,2);
-    const superShiny = new superShiny(point);
+    const superShiny = new SuperShiny(point);
     expect(superShiny.isConsumed).toBe(false);
 });
 
 test('SuperShiny constructor sets sprite value to 2.', () => {
     const point = new Point(1,2);
-    const superShiny = new superShiny(point);
+    const superShiny = new SuperShiny(point);
     expect(superShiny.sprite).toBe(2);
 });
 
 test('SuperShiny constructor sets power value to 3.', () => {
     const point = new Point(1,2);
-    const superShiny = new superShiny(point);
+    const superShiny = new SuperShiny(point);
     expect(superShiny.power).toBe(3);
 });
