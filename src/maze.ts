@@ -1,40 +1,42 @@
 /** 
  * Map format is:
- * 0 = empty
+ * 0 = empty (floor)
  * 1 = wall
- * 2 = shiny
- * 3 = player
+ * 2 = Shiny
+ * 3 = BetterShiny
+ * 4 = SuperShiny
+ * 5 = player
  */
 
 /** Preset 5x7 maze maps */
-const mazeOriginal = [
+export const mazeOriginal = [
     [0, 1, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 0],
-    [0, 1, 0, 3, 0, 1, 0],
+    [0, 1, 0, 5, 0, 1, 0],
     [0, 1, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 1, 0],
 ];
-const mazeEmpty = [
+export const mazeEmpty = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 5, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
 ];
-const mazeOneWall = [
+export const mazeOneWall = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 0, 3, 0, 0, 0],
+    [0, 0, 0, 5, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
 ];
 
 /**
- * Takes a given maze and randomly generates
- * which empty spaces will have shinies
+ * Takes a given maze and randomly generates shinies in floor (0) spaces.
  */
-function generateShinies(maze: number[][]) {
-
+export function generateShinies<const T extends number[][]>(maze: T): T {
+    // TODO
+    return maze;
 }
 
 /**
@@ -43,5 +45,7 @@ function generateShinies(maze: number[][]) {
  * the shinies.
  * @param maze 
  */
-function mazeShifter(maze: number[][]) {
+export function mazeShifter<const T extends number[][]>(maze: T): T {
+    // TODO
+    return maze;
 }

@@ -1,64 +1,62 @@
 import "../src/maze";
+import { generateShinies, mazeOriginal, mazeShifter } from "../src/maze";
 
-test('generateShinies generates 2\'s on a given map.', () => {
-    const maze = mazeOriginal;
-    generateShinies(maze);
-    let hasShiny = false;
-    for (let row of maze) {
-        for (let element of row) {
-            // 2 = shiny
-            if (element == 2) { 
-                hasShiny = true;
-                break;
+describe('generateShinies', () => {
+    test('returns 7x8 map when given a 7x8 map.', () => {
+        const sevenbyseven = [
+            [0, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 1, 0, 0],
+            [0, 1, 0, 5, 0, 1, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 0, 1, 1, 0, 0],
+        ];
+        
+        const result = generateShinies(sevenbyseven);
+        
+        expect(result.length).toBe(7);
+        for (let i = 0; i < result.length; i++) {
+            expect(result[i].length).toBe(8);
+        }
+    });
+
+    test('generates shinies on a given map.', () => {
+        const maze = generateShinies(mazeOriginal);
+        let hasShiny = false;
+        for (let i = 0; i < maze.length; i++) {
+            for (let j = 0; j < maze[i].length; i++) {
+                if (maze[i][j] == 2, 3, 4) { 
+                    hasShiny = true;
+                    break;
+                }
             }
         }
-    }
-    expect(hasShiny).toBeTruthy;
-});
+        expect(hasShiny).toBeTruthy;
+    });
 
-test('generateShinies only replaces 0\'s on a given map.', () => {
-    // TODO
-    const maze = mazeOriginal;
-    generateShinies(maze);
-    // Reset the generated maze and check equality
-    for (let row of maze) {
-        for (let element of row) {
-            if (element == 2) {
-                element = 99;
+    test('only replaces 0\'s on a given map.', () => {
+        const maze = generateShinies(mazeOriginal);
+        
+        for (let i = 0; i < mazeOriginal.length; i++) {
+            for (let j = 0; j < mazeOriginal[i].length; i++) {
+                let node = mazeOriginal[i][j];
+
+                if (node > 0) {
+                    expect(maze[i][j]).toBe(node);
+                }
             }
         }
-    }
-
-    for (let i = 0; i < maze.length; i++) {
-        for (let j = 0; j < maze[i].length; j++) {
-            if (maze[i][j] != mazeOriginal[i][j]) {
-
-            }
-        }
-    }
-    // expect(maze).toEqual(mazeOriginal)
+    });
 });
 
-test('generateShinies does not replace any 1\'s on a given map.', () => {
-    const maze = mazeOriginal;
-    generateShinies(maze);
-    // Reset the generated maze and check equality
-    for (let row of maze) {
-        for (let element of row) {
-            if (element == 2) {
-                element = 0;
-            }
-        }
-    }
-    expect(maze).toEqual(mazeOriginal)
-});
+describe('mazeShifter', () => {
+    test('does not generate a maze equal to the current maze.', () => {
+        const maze = mazeOriginal;
+        const newMaze = mazeShifter(maze);
+        expect(newMaze).not.toEqual(maze);
+    });
 
-test('mazeShifter does not generate a maze equal to the current maze.', () => {
-    const maze = mazeOriginal;
-    const newMaze = mazeShifter(maze);
-    expect(newMaze).not.toEqual(maze);
-});
-
-test('mazeShifter ensures a path to at least one shiny.', () => {
-    
+    test('ensures a path to at least one shiny.', () => {
+        // TODO: BFS algo
+    });
 });
